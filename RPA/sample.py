@@ -8,7 +8,7 @@ import utils
 import load_data
 
 from select_study_group import selectStudyGroup
-from select_case_type import selectCaseType
+from select_case_type import selectCaseTypeS
 from search_record import searchRecord
 from select_sample_type import selectSampleType
 from select_case import caseSelect
@@ -28,7 +28,7 @@ with sync_playwright() as p:
     try:
         for line in samples.index:
             selectStudyGroup(noraybanks)
-            selectCaseType(noraybanks, samples, positions, line)
+            selectCaseTypeS(noraybanks, samples, positions, line)
             searchRecord(noraybanks, samples, line)
             caseSelect (noraybanks)
             

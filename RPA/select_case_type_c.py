@@ -1,9 +1,9 @@
-import time
+import time 
 
-def selectCaseTypeS(noraybanks, samples, positions, line):
+def selectCaseType(noraybanks, cases, positions, line):
     # Selecionar tipo de caso
     if not positions.empty:
-        number = samples.loc[line, 'TIPOC']
+        number = cases.loc[line, 'TIPOC']
         position = positions[positions['TIPO'] == number]
         print(f"Processando número: {number}")
         print(position)
@@ -16,7 +16,6 @@ def selectCaseTypeS(noraybanks, samples, positions, line):
         print(f"Selecionando a opção: {number} com XPath: {xpath}")
         time.sleep(3)
         
-        noraybanks.wait_for_event
-        noraybanks.query_selector('#nbConsulta1_NbCtrlBiobancoNodo1_ddListNodo').select_option(str(xpath))
-        time.sleep(2)
-
+        noraybanks.query_selector('#NbCtrlBiobancoNodo1_ddListNodo').click()
+        noraybanks.query_selector('#NbCtrlBiobancoNodo1_ddListNodo').select_option(str(xpath))
+        time.sleep(5)
