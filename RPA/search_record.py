@@ -10,3 +10,11 @@ def searchRecord(noraybanks, samples, line):
         noraybanks.fill('#nbConsulta1_TxtCodigoUnico', prontuario)
         noraybanks.wait_for_selector('#btnFiltro_jqbtn')
         noraybanks.locator('#btnFiltro_jqbtn').click()
+
+    else:
+        noraybanks.wait_for_selector('#nbConsulta1_TxtCodigoApp').click()
+        codigonb = str(samples.loc[line, "NB"])
+        print(codigonb)
+        noraybanks.wait_for_selector('#btnFiltro_jqbtn')
+        noraybanks.locator('#btnFiltro_jqbtn').click()
+

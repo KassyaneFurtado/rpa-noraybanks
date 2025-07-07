@@ -8,10 +8,10 @@ def caseData(noraybanks, cases, line):
         if not pd.isnull(cases.loc[line, "PRONTUARIO"]):
                 noraybanks.wait_for_selector('#TxtCodDonante')
                 noraybanks.locator('#TxtCodDonante').click()
-                prontuario = str(int(cases.loc[line, "PRONTUARIO"]))
+                prontuario = str(cases.loc[line, "PRONTUARIO"])
                 noraybanks.fill('#TxtCodDonante', prontuario)
 
-        noraybanks.locator('#DDListEspecie').select_option('2')     
+        noraybanks.locator('#DDListEspecie').select_option('1')     
         noraybanks.locator('#checkBoxDatosFiliacion').click()
         noraybanks.locator('#BtnAceptar_jqbtn').click()
         noraybanks.locator('#NbctrlPopup1_ButtonOk_jqbtn').click()
@@ -33,13 +33,15 @@ def caseData(noraybanks, cases, line):
         noraybanks.locator('#txtApe2').click()
         noraybanks.fill('#txtApe2', NOME3)
 
-        DATANASCIMENTO = str(cases.loc[line, "DATANASCIMENTO"])
-        noraybanks.locator('#TxtFechaNac').click()
-        noraybanks.fill('#TxtFechaNac', DATANASCIMENTO)
-        noraybanks.locator('#divFormularioFiliacion > div').click()
+        if not pd.isnull(cases.loc[line, "DATANASCIMENTO"]):
+                DATANASCIMENTO = str(cases.loc[line, "DATANASCIMENTO"])
+                noraybanks.locator('#TxtFechaNac').click()
+                noraybanks.fill('#TxtFechaNac', DATANASCIMENTO)
+                noraybanks.locator('#divFormularioFiliacion > div').click()
 
-        noraybanks.locator('#TxtHistoria').click()
-        noraybanks.fill('#TxtHistoria', prontuario)
+        if not pd.isnull(cases.loc[line, "PRONTUARIO"]):
+                noraybanks.locator('#TxtHistoria').click()
+                noraybanks.fill('#TxtHistoria', prontuario)
 
         noraybanks.locator('#DDSexo').click()
         if cases.loc[line, 'SEXO'] == 1:

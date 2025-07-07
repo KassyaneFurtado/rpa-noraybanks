@@ -3,8 +3,8 @@ import time
 def selectCaseType(noraybanks, cases, positions, line):
     # Selecionar tipo de caso
     if not positions.empty:
-        number = cases.loc[line, 'TIPOC']
-        position = positions[positions['TIPO'] == number]
+        number = (cases.loc[line, 'TIPOC'])
+        position = (positions[positions['TIPO'] == number])
         print(f"Processando número: {number}")
         print(position)
         
